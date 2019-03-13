@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Tilesets/GridLines/grid_lines_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilesets/Grid/grid_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Grid/grid.gd" type="Script" id=3]
 [ext_resource path="res://Pawn/pawn.gd" type="Script" id=4]
+[ext_resource path="res://Pawn/Actor.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 
@@ -19,6 +20,15 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 script = ExtResource( 3 )
 
 [node name="Object" type="Node2D" parent="Grid"]
+position = Vector2( 448, 256 )
+script = ExtResource( 4 )
+type = 2
+
+[node name="Actor" parent="Grid" instance=ExtResource( 5 )]
+position = Vector2( 480, 160 )
+
+[node name="Cu" type="Node2D" parent="Grid"]
+position = Vector2( 448, 448 )
 script = ExtResource( 4 )
 type = 2
 
