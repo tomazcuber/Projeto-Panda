@@ -14,8 +14,9 @@ func _process(delta):
 	
 	var target_position = Grid.request_move(self, input_direction)
 	if target_position:
-		var move_direction = (target_position - position).normalized()
-		position = target_position 
+		move_to(target_position)
+	else:
+		bump()
 
 
 func get_input_direction():
@@ -26,3 +27,23 @@ func get_input_direction():
 
 func update_look_direction(direction):
 	$Pivot/Sprite.rotation = direction.angle()		
+
+func move_to(target_position):
+	set_process(false)
+	$AnimationPlayer.play("walk")
+
+	var move_direction = (target_position - position).normalized()
+	$Tween.interpolate_property($Pivot, "position", - move_direction * 32, Vector2(), $AnimationPlayer.current_animation_length, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	position = target_position
+
+	$Tween.start()
+
+	yield($AnimationPlayer, "animation_finished")
+
+	set_process(true)
+
+func bump():
+	set_process(false)
+	$AnimationPlayer.play("bump")
+	yield($AnimationPlayer, "animation_finished")
+	set_process(true)
