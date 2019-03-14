@@ -29,7 +29,7 @@ func request_move(pawn, direction):
 			var pawn_name = get_cell_pawn(cell_target).name
 			print("Cell %s contains %s" % [cell_target, pawn_name])
 
-
+#func is_next_cell_free():
 	
 
 
