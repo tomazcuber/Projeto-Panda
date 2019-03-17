@@ -3,8 +3,9 @@ extends "pawn.gd"
 onready var Grid = get_parent()
 var look_direction setget set_look_direction, get_look_direction
 var move_start : bool = false
+
 func _ready():
-	set_look_direction(Vector2(1,0))
+	set_look_direction(Vector2(0,1))
 
 func _process(delta):
 	#var input_direction : Vector2 = get_input_direction()
@@ -59,15 +60,4 @@ func move_while_free():
 	var target_position = Grid.request_move(self, get_look_direction())
 	
 	if target_position:
-		set_process(false)
-		$AnimationPlayer.play("walk")
-	
-		var move_direction = (target_position - position).normalized()
-		$Tween.interpolate_property($Pivot, "position", - move_direction * 32, Vector2(), $AnimationPlayer.current_animation_length, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		position = target_position
-	
-		$Tween.start()
-	
-		yield($AnimationPlayer, "animation_finished")
-	
-		set_process(true)
+		move_to(target_position)

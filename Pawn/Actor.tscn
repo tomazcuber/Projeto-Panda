@@ -3,7 +3,7 @@
 [ext_resource path="res://Pawn/actor.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Pawns/character.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "bump"
 length = 0.1
 step = 0.02
@@ -20,8 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -1.5, 9 ), Vector2( 6.5, 2.5 ), Vector2( -11.5, 8.5 ), Vector2( 4, -5 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "walk"
+[sub_resource type="Animation" id=2]
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
@@ -76,6 +75,6 @@ texture = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/bump = SubResource( 2 )
-anims/walk = SubResource( 1 )
+anims/bump = SubResource( 1 )
+anims/walk = SubResource( 2 )
 

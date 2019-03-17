@@ -15,8 +15,12 @@ func _ready():
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not event is InputEventMouseButton:
-		return 
-	if event.button_index != BUTTON_LEFT or not event.pressed:
-		return
+	#if not event is InputEventMouseButton:
+	#	return 
+	#if event.button_index != BUTTON_LEFT or not event.pressed:
+	#	return
 	
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_ESCAPE:
+			print("C ya l8r")
+			get_tree().quit()

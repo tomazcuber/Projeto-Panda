@@ -1,6 +1,6 @@
 extends TileMap
 
-enum CELL_TYPES { ACTOR, OBSTACLE, OBJECT }
+enum CELL_TYPES { ACTOR, OBSTACLE, PIECE }
 
 #Maps Children Objects to Grid coordinates
 func _ready():
@@ -25,10 +25,9 @@ func request_move(pawn, direction):
 		-1: #Cell is empty
 			return update_pawn_position(pawn, cell_start, cell_target)
 		
-		CELL_TYPES.OBJECT, CELL_TYPES.ACTOR: #Cell is an static Object or another Actor
-			var pawn_name = get_cell_pawn(cell_target).name
-			print("Cell %s contains %s" % [cell_target, pawn_name])
-
+		CELL_TYPES.PIECE:
+			var piece = get_cell_pawn(cell_target)
+			pawn.set_look_direction(piece.get_target_direction())
 #func is_next_cell_free():
 	
 
