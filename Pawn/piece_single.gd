@@ -16,6 +16,9 @@ func get_target_direction() -> Vector2:
 	return target_direction
 
 func _ready():
+	set_piece_rotation()
+
+func set_piece_rotation():
 	match entry_direction:
 		Vector2(1,0):
 			match target_direction:
@@ -42,4 +45,4 @@ func _ready():
 					Vector2(1,0):
 						continue 
 					Vector2(-1,0):
-						$Sprite.set_flip_h(true)	
+						$Sprite.set_flip_h(true)
