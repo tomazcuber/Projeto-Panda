@@ -26,11 +26,13 @@ func request_move(pawn, direction):
 			return update_pawn_position(pawn, cell_start, cell_target)
 		
 		CELL_TYPES.PIECE:
+			print("Piece hit!")
 			var piece = get_cell_pawn(cell_target)
 			if pawn.get_look_direction() == piece.get_entry_direction():
 				pawn.set_look_direction(piece.get_target_direction())
 				return update_pawn_position(pawn, cell_start, cell_target)
-				
+		CELL_TYPES.OBSTACLE:
+			print("Obstacle hit")		
 #func is_next_cell_free():
 	
 

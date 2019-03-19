@@ -7,6 +7,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Actor" type="Sprite" parent="."]
+visible = false
 position = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 
@@ -15,6 +16,7 @@ position = Vector2( 96, 32 )
 texture = ExtResource( 2 )
 
 [node name="Object" type="Sprite" parent="."]
+visible = false
 position = Vector2( 160, 32 )
 texture = ExtResource( 3 )
 
