@@ -24,3 +24,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			print("C ya l8r")
 			get_tree().quit()
+		if event.pressed and event.scancode == KEY_ENTER:
+			actor.set_move_start(true)	

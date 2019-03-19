@@ -1,27 +1,18 @@
 extends "pawn.gd"
 
 onready var Grid = get_parent()
-var look_direction setget set_look_direction, get_look_direction
+var look_direction: Vector2 setget set_look_direction, get_look_direction
 var move_start : bool = false
 
 func _ready():
-	set_look_direction(Vector2(0,1))
+	set_look_direction(Vector2(1,0))
 
 func _process(delta):
-	#var input_direction : Vector2 = get_input_direction()
-	#if not input_direction:
-	#	return
-	#set_look_direction(input_direction)
-	#print(input_direction)
-	
-	
-	if (Input.is_action_just_pressed("ui_accept")):
-		move_start = true
-	
+
 	if move_start: 
 		move_while_free()
-
-	
+	else:
+		return
 
 func get_input_direction():
 	return Vector2(
@@ -31,6 +22,7 @@ func get_input_direction():
 
 func set_look_direction(direction: Vector2):
 	look_direction = direction
+	yield($AnimationPlayer, "animation_finished")
 	$Pivot/Sprite.rotation = look_direction.angle()		
 
 func get_look_direction():
@@ -61,3 +53,10 @@ func move_while_free():
 	
 	if target_position:
 		move_to(target_position)
+	else: 
+		move_start = false
+		bump()
+
+		
+func set_move_start(value: bool):
+	move_start = value	
