@@ -26,3 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().quit()
 		if event.pressed and event.scancode == KEY_ENTER:
 			actor.set_move_start(true)	
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			print("Cell: ",grid.world_to_map(event.position), " was targeted")
+			#TO DO: instantiate PieceSingle scene on target cell's position.
