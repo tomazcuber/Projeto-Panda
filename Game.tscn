@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game_manager.gd" type="Script" id=1]
 [ext_resource path="res://Tilesets/GridLines/grid_lines_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Tilesets/Grid/grid_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Grid/grid.gd" type="Script" id=4]
 [ext_resource path="res://Pawn/Actor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Pawn/pawn.gd" type="Script" id=6]
-[ext_resource path="res://Pawn/PieceSingle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Pawn/PieceSingle.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -25,61 +24,6 @@ script = ExtResource( 4 )
 [node name="Actor" parent="Grid" instance=ExtResource( 5 )]
 position = Vector2( 96, 160 )
 
-[node name="Object" type="Node2D" parent="Grid"]
-position = Vector2( 448, 256 )
-script = ExtResource( 6 )
-type = 2
-
-[node name="Cu" type="Node2D" parent="Grid"]
-position = Vector2( 128, 384 )
-script = ExtResource( 6 )
-type = 2
-
-[node name="PieceSingle" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 352, 160 )
-type = 2
-entry_direction = Vector2( 1, 0 )
-target_direction = Vector2( 0, 1 )
-
-[node name="PieceSingle2" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 608, 544 )
-type = 2
-entry_direction = Vector2( 1, 0 )
-target_direction = Vector2( 0, -1 )
-
-[node name="PieceSingle3" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 928, 224 )
-type = 2
-entry_direction = Vector2( -1, 0 )
-target_direction = Vector2( 0, 1 )
-
-[node name="PieceSingle4" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 928, 288 )
-type = 2
-entry_direction = Vector2( -1, 0 )
-target_direction = Vector2( 0, -1 )
-
-[node name="PieceSingle5" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 352, 544 )
-type = 2
-entry_direction = Vector2( 0, 1 )
-target_direction = Vector2( 1, 0 )
-
-[node name="PieceSingle6" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 864, 160 )
-type = 2
-entry_direction = Vector2( 0, 1 )
-target_direction = Vector2( -1, 0 )
-
-[node name="PieceSingle7" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 608, 288 )
-type = 2
-entry_direction = Vector2( 0, -1 )
-target_direction = Vector2( 1, 0 )
-
-[node name="PieceSingle8" parent="Grid" instance=ExtResource( 7 )]
-position = Vector2( 864, 288 )
-type = 2
-entry_direction = Vector2( 0, -1 )
-target_direction = Vector2( -1, 0 )
+[node name="PieceSingle" parent="Grid" instance=ExtResource( 6 )]
+position = Vector2( 192, 64 )
 

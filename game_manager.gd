@@ -1,10 +1,11 @@
 extends Node
 
-enum CELL_TYPES { ACTOR, OBSTACLE, OBJECT }
+enum CELL_TYPES { ACTOR, OBSTACLE, PIECE }
 
 onready var grid : TileMap = $Grid
 onready var actor: Node2D = $Grid/Actor
 onready var grid_children : Array = $Grid.get_children()
+var piece = preload("res://Pawn/PieceSingle.tscn")
 var grid_objects : Array 
 
 func _ready():
@@ -26,3 +27,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().quit()
 		if event.pressed and event.scancode == KEY_ENTER:
 			actor.set_move_start(true)	
+
+	if event is InputEventMouseButton:
+		var grid_position = grid.world_to_map(event.position)
+		print("Click was on: ", event.position)
+		print("Cell is on: " , grid_position)
+	
+		var new_piece = piece.instance()
+		new_piece.init(Vector2(0,-1),Vector2(1,0))
+		new_piece.set_position(grid_position  * 64)
+	
+		grid.add_child(new_piece)
+		grid.set_cellv(grid_position, CELL_TYPES.PIECE)
+
+
