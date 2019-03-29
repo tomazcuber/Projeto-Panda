@@ -3,7 +3,7 @@
 [ext_resource path="res://Pawn/piece_single.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Pieces/turn-up.png" type="Texture" id=2]
 
-[node name="PieceSingle" type="Node2D"]
+[node name="PieceSingleUL" type="Node2D"]
 position = Vector2( 32, 32 )
 script = ExtResource( 1 )
 
@@ -11,4 +11,5 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Pivot"]
 texture = ExtResource( 2 )
+flip_h = true
 

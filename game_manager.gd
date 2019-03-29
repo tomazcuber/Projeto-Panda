@@ -28,16 +28,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed and event.scancode == KEY_ENTER:
 			actor.set_move_start(true)	
 
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		var grid_position = grid.world_to_map(event.position)
-		print("Click was on: ", event.position)
-		print("Cell is on: " , grid_position)
-	
-		var new_piece = piece.instance()
-		new_piece.init(Vector2(0,-1),Vector2(1,0))
-		new_piece.set_position(grid_position  * 64)
-	
-		grid.add_child(new_piece)
-		grid.set_cellv(grid_position, CELL_TYPES.PIECE)
+		if grid.get_cellv(grid_position) == -1:
+			print("Click was on: ", event.position)
+			print("Cell is on: " , grid_position)
+		
+			var new_piece = piece.instance()
+			new_piece.init(Vector2(1,0),Vector2(0,1))
+			new_piece.set_position(grid_position  * 64 + Vector2(32,32))
+		
+			grid.add_child(new_piece)
+			grid.set_cellv(grid_position, CELL_TYPES.PIECE)
 
 
