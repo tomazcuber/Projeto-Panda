@@ -5,7 +5,17 @@ enum CELL_TYPES { ACTOR, OBSTACLE, PIECE }
 onready var grid : TileMap = $Grid
 onready var actor: Node2D = $Grid/Actor
 onready var grid_children : Array = $Grid.get_children()
-var piece = preload("res://Pawn/PieceSingle.tscn")
+
+var orthogonal_pieces = {
+piece_down_left : preload("res://Pawn/PieceSingleDL.tscn"),
+piece_down_right : preload("res://Pawn/PieceSingleDR.tscn"),
+piece_up_left : preload("res://Pawn/PieceSingleUL.tscn"),
+piece_up_right : preload("res://Pawn/PieceSingleUR.tscn"),
+piece_left_down : preload("res://Pawn/PieceSingleLD.tscn"),
+piece_left_up : preload("res://Pawn/PieceSingleLU.tscn"),
+piece_right_down : preload("res://Pawn/PieceSingleRD.tscn"),
+piece_right_up : preload("res://Pawn/PieceSingleRU.tscn")
+} 
 var grid_objects : Array 
 
 func _ready():
@@ -20,13 +30,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	#	return 
 	#if event.button_index != BUTTON_LEFT or not event.pressed:
 	#	return
-	
+	#var current_piece = orthogonal_pieces.piece_down_left
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			print("C ya l8r")
 			get_tree().quit()
-		if event.pressed and event.scancode == KEY_ENTER:
-			actor.set_move_start(true)	
+		if event.pressed and event.scancode	== KEY_ENTER:
+			actor.set_move_start(true)
+				#KEY_1:		
 
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		var grid_position = grid.world_to_map(event.position)
@@ -34,7 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("Click was on: ", event.position)
 			print("Cell is on: " , grid_position)
 		
-			var new_piece = piece.instance()
+			var new_piece = orthogonal_pieces.piece_down_left.instance()
 			new_piece.init(Vector2(1,0),Vector2(0,1))
 			new_piece.set_position(grid_position  * 64 + Vector2(32,32))
 		

@@ -3,7 +3,7 @@
 [ext_resource path="res://Pawn/piece_single.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Pieces/turn-up.png" type="Texture" id=2]
 
-[node name="PieceSingleDR" type="Node2D"]
+[node name="PieceSingleDL" type="Node2D"]
 position = Vector2( 32, 32 )
 script = ExtResource( 1 )
 
