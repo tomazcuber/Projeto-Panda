@@ -18,6 +18,7 @@ var orthogonal_pieces: Dictionary = {
 } 
 var grid_objects : Array 
 var selected_piece 
+
 func _ready():
 	for node in grid_children:
 		if node.type != CELL_TYPES.ACTOR:
@@ -48,12 +49,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		if grid.get_cellv(grid_position) == -1:
 			print("Click was on: ", event.position)
 			print("Cell is on: " , grid_position)
-		
-			var new_piece = selected_piece.instance()
-			new_piece.init(Vector2(1,0),Vector2(0,1))
-			new_piece.set_position(grid_position  * 64 + Vector2(32,32))
-		
-			grid.add_child(new_piece)
-			grid.set_cellv(grid_position, CELL_TYPES.PIECE)
+			
+			if selected_piece:
+				var new_piece = selected_piece.instance()
+				new_piece.init(Vector2(1,0),Vector2(0,1))
+				new_piece.set_position(grid_position  * 64 + Vector2(32,32))
+			
+				grid.add_child(new_piece)
+				grid.set_cellv(grid_position, CELL_TYPES.PIECE)
 
 
